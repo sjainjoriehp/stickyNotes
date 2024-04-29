@@ -20,11 +20,10 @@ const notesShema=new Schema({
         type:String,
         default:'General'
     },
-    date:{
-        type:Date,
-        default:Date.now
-    }
+    
 
+},{
+    timestamps: true
 })
 
 module.exports=mongoose.model('notes',notesShema)

@@ -14,12 +14,10 @@ const userShema=new Schema({
     password:{
         type:String,
         require:true
-    },
-    date:{
-        type:Date,
-        default:Date.now
     }
 
+},{
+    timestamps: true
 })
 
 module.exports=mongoose.model('user',userShema)
