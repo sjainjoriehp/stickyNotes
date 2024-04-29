@@ -1,0 +1,67 @@
+import {React,useEffect,useState} from 'react'
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes } from "react-router-dom";
+import Navbar from './components/Navbar';
+import  Home  from './components/Home';
+import  NotesHome  from './components/NotesHome';
+import About from './components/About';
+import NoteState from './context/notes/NoteState';
+import Alert  from './components/Alert';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Footer from './components/Footer'
+import ProtectedRoute from './auth/ProtectedRoute';
+
+
+
+
+
+export default function App() {
+
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type)=>{
+      setAlert({
+        msg: message,
+        type: type
+      })
+      setTimeout(() => {
+          setAlert(null);
+      }, 1500);
+  }
+
+   useEffect(()=>{
+
+   },[])
+
+  return (
+    <>
+
+    <div className="container">
+    <NoteState showAlert={showAlert}>
+    <Router>
+    <Navbar title="StickyNotes" showAlert={showAlert}/>
+    <Alert alert={alert}/>
+    <div className="container">
+
+    <Routes>  
+         <Route  path="/*"   element={<ProtectedRoute Component={Home} showAlert={showAlert}/> } />
+         <Route  path="/"   element={<ProtectedRoute Component={Home} showAlert={showAlert}/> } />
+         <Route exact path="/Home"   element={<ProtectedRoute Component={Home} showAlert={showAlert}/>}  /> 
+         <Route exact path="/NotesHome"   element={<ProtectedRoute Component={NotesHome} showAlert={showAlert}/>}  />
+         <Route exact path="/About"   element={<About showAlert={showAlert}/>} />
+         <Route exact path="/Login"   element={<ProtectedRoute Component={Login} showAlert={showAlert}/>}  /> 
+         <Route exact path="/Signup"  element={<ProtectedRoute Component={Signup} showAlert={showAlert}/>} />
+      </Routes>  
+
+    </div>
+    <Footer />
+     </Router> 
+     </NoteState>
+   </div>
+    </>
+  )
+}
