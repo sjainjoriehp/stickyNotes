@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
 import NoteItem from './NoteItem';
 import Addnote from './Addnote';
-import { AuthToken } from '../auth/AuthToken';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -119,7 +118,7 @@ const Notes = (props) => {
                     {notes.length===0 && 'No notes to display'}
                     </div>
                     {  notes?.filter((fl)=>{
-                    return Object.keys(fl).some(key => {
+                    return Object.keys(fl)?.some(key => {
                         return ValFilter?.includes(key) ? fl[key].toString().includes(name) : false
                       })
                 }
