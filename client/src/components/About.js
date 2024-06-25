@@ -5,12 +5,8 @@ function About() {
 
   //{document.title="StickyNotes - About"}
    //{document.title="StickyNotes - About"}
-<<<<<<< HEAD
-  //{document.title="StickyNotes - About"}
+ 
 
-=======
-  
->>>>>>> 602025d423f9afa89850707f8b47d7721620af27
   return (
     <div className="container">
     <div className="about-section">
