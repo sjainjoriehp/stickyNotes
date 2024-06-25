@@ -4,7 +4,7 @@ import { React } from 'react'
 function About() {
 
   //{document.title="StickyNotes - About"}
- 
+   //{document.title="StickyNotes - About"}
   
   return (
     <div className="container">
